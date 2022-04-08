@@ -46,6 +46,7 @@ public class GenerateSecret {
 
     public static Map<Integer, Integer> findShares(List<Integer> factors, int numberParts, int P){
         Map<Integer, Integer> shares = new HashMap<>();
+        // TODO: реализовать проверку добавляемых значений, чтобы не было повторных
         for (int i = 1; i <= numberParts; i++) {
             int temp = 0;
             int k = (int) (Math.random()*factors.size());
