@@ -9,13 +9,13 @@ import static com.tversu.aidavydenko.utils.Utils.sieveOfEratosthenes;
 public class RecoverSecret {
     private static final int MIN_NUMBER_OF_SECRET= 4;
     public static int recover() {
-        //из файла
+        // TODO: считываение P из json
         int P = 0;
         if (P == 0) {
             P = sieveOfEratosthenes((int) (Math.random() * 100));
             System.out.println(P);
         }
-        //из файла
+        // TODO: считываение частей секрета из json
         Map<Integer, Integer> secretParts = new HashMap<>();
         int numK = secretParts.size();//кол-во частей, считанных из файла
         if(numK < MIN_NUMBER_OF_SECRET) {
@@ -48,7 +48,7 @@ public class RecoverSecret {
             denominator *= points[i] - points[j];
         }
         numerator = numerator % P;
-        denominator = (gcdex(denominator, P)[1] % 13 + 13) % 13;//поиск обратного
+        denominator = (gcdex(denominator, P)[1] % P + P) % P;//поиск обратного
         numerator *= denominator;
         return numerator;
     }

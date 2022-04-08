@@ -13,15 +13,21 @@ public class AddSecretParts {
 
     public static void addSecretParts(int numberNewParts) {
         //восстановили секрет, после чего создали части, не совпадающие с уже имеющимеся
-        //необходимо восстановить весь полином????
+        //необходимо восстановить весь полином
+        //int secret = RecoverSecret.recover();//находится при поиске полинома
+        // TODO: считывание частей секрета из json
         List<Point> parts = new ArrayList<>();
-        int secret = RecoverSecret.recover();
-        int P = 0;//считали из json
-        int numberParts = 0;//считали из json
+        // TODO: считывание P из json
+        int P = 0;
+        //Set<Integer> keys = parts.stream().map(Point::getX).collect(Collectors.toCollection(TreeSet::new));
+        // TODO: считываение кол-ва новых частей секрета из json
+        int numberNewSecretParts = 0;
         List<Integer> polinom = interpolatingLagrangePolynomial(parts, P);
-        Set<Integer> keys = new TreeSet<>(parts.stream().map(x -> x.getX()).collect(Collectors.toList()));
-        //генерация частей секрета и добавление в json файлы
+        // TODO: генерация частей секрета и добавление в json файлы
+        Map<Integer, Integer> shares = GenerateSecret.findShares(polinom, numberNewSecretParts, P);
+
     }
+
     //готово
     private static List<Integer> interpolatingLagrangePolynomial(List<Point> parts, int P) {
         List<Integer> polinom = new ArrayList<>(MIN_NUMBER_OF_SECRET);
@@ -38,21 +44,44 @@ public class AddSecretParts {
         }
         return polinom;
     }
-    //не готово
+
+
+    //готово
     private static List<Integer> findLi(int i, List<Integer> points, int P){
-        int numerator = 1;
+        int[] numerator = {1,0,0,1};
         int denominator = 1;
+        switch (i){
+            case 0:
+                numerator[1] = points.get(1) * points.get(2) +
+                        (points.get(1) + points.get(2)) * points.get(3);
+                break;
+            case 1:
+                numerator[1] = points.get(0) * points.get(2) +
+                        (points.get(0) + points.get(2)) * points.get(3);
+                break;
+            case 2:
+                numerator[1] = points.get(0) * points.get(1) +
+                        (points.get(0) + points.get(1)) * points.get(3);
+                break;
+            case 3:
+                numerator[1] = points.get(0) * points.get(1) +
+                        (points.get(0) + points.get(1)) * points.get(2);
+                break;
+        }
         for (int j = 0; j < i; j++) {
-            numerator *= points.get(j);
+            numerator[0] *= points.get(j);
+            numerator[2] += points.get(j);
             denominator *= points.get(i) - points.get(j);
         }
         for (int j = i+1; j < points.size(); j++) {
-            numerator *= points.get(j);
+            numerator[0] *= points.get(j);
+            numerator[2] += points.get(j);
             denominator *= points.get(i) - points.get(j);
         }
-        numerator = numerator % P;
-        denominator = (gcdex(denominator, P)[1] % 13 + 13) % 13;//поиск обратного
-        numerator *= denominator;
-        return new LinkedList<>();
+        denominator = (gcdex(denominator, P)[1] % P + P) % P;//поиск обратного
+        for (int j = 0; j < 4; j++) {
+            numerator[i] = ((numerator[i]%P)*denominator)% P;//может можно оптимизировать
+        }
+        return Arrays.stream(numerator).boxed().collect(Collectors.toList());
     }
 }

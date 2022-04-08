@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Shamir's secret sharing scheme." />
+        <module name="ShamirsSecretSharingScheme." />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Shamir's secret sharing scheme." target="11" />
+      <module name="ShamirsSecretSharingScheme." target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
