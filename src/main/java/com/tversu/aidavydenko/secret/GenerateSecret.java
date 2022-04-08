@@ -50,7 +50,6 @@ public class GenerateSecret {
             int temp = 0;
             int k = (int) (Math.random()*factors.size());
             for (int j = 0; j < factors.size(); j++) {
-                //можно релизовать случаный параметр для поиска значения функ-и
                 temp += factors.get(j) * Math.pow(k, j);
             }
             if(temp % P == 0){
