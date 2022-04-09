@@ -2,7 +2,7 @@ package com.tversu.aidavydenko.secret;
 
 import java.util.*;
 
-import static com.tversu.aidavydenko.utils.Utils.getPolinom;
+import static com.tversu.aidavydenko.utils.Utils.getRandPolinom;
 import static com.tversu.aidavydenko.utils.Utils.sieveOfEratosthenes;
 
 public class GenerateSecret {
@@ -25,30 +25,37 @@ public class GenerateSecret {
          //вывод в json shares (так же нельзя забывать размер поля и
          степерь полинома, но по ТЗ его не передаем)
          */
-        int P = 0; //считывание или генерация P(простое)
+        // TODO: считываение P из json
+        int P = 0;
         if (P == 0) {
             P = sieveOfEratosthenes((int) ((Math.random() * 100) + 20));
         }
-        int numberParts = 0;//считывание кол-во частей секрета
-        if (numberParts != 0) {
-            numberParts = (int) ((Math.random() * 10) + 4);
+        // TODO: считываение общего кол-ва частей секрета из json
+        int numberSecretParts = 0;
+        if (numberSecretParts != 0) {
+            numberSecretParts = (int) ((Math.random() * 10) + 4);
         }
+        // TODO: считываение секрета из json
         int secret = 18938 % P;//считывание секрета
 
         //значение с a1 по ak-1 генерируем
-        List<Integer> polinom = new ArrayList<>(getPolinom(K, secret, P));
-        Map<Integer, Integer> shares = findShares(polinom, numberParts, P);
-        //запись в json файл
-
+        List<Integer> polinom = new ArrayList<>(getRandPolinom(K, secret, P));
+        Map<Integer, Integer> shares = findShares(polinom, numberSecretParts, P);
+        // TODO: реализовать запись в json
     }
 
-    //заменить Map, на List<transferJSON> ?
-    private static Map<Integer, Integer> findShares(List<Integer> factors, int numberParts, int P){
+    public static Map<Integer, Integer> findShares(List<Integer> factors, int numberParts, int P){
         Map<Integer, Integer> shares = new HashMap<>();
+        // TODO: реализовать проверку добавляемых значений, чтобы не было повторных
         for (int i = 1; i <= numberParts; i++) {
             int temp = 0;
+            int k = (int) (Math.random()*factors.size());
             for (int j = 0; j < factors.size(); j++) {
-                temp += factors.get(j) * Math.pow(i, j);//можно релизовать случаный параметр для поиска значения функ-и
+                temp += factors.get(j) * Math.pow(k, j);
+            }
+            if(temp % P == 0){
+                i--;
+                continue;
             }
             shares.put(i, temp % P);
         }

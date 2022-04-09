@@ -4,7 +4,6 @@ import com.tversu.aidavydenko.secret.GenerateSecret;
 public class Demo {
 
     public static void main(String[] args) {
-        GenerateSecret.generateSecret();
-        System.out.println(RecoverSecret.recover());
+
     }
 }

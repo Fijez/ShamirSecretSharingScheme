@@ -3,7 +3,7 @@ package com.tversu.aidavydenko.utils;
 import java.util.*;
 
 public class Utils {
-    public static Set<Integer> getPolinom(int k, int secret, int P) {
+    public static Set<Integer> getRandPolinom(int k, int secret, int P) {
         List<Integer> factors = new ArrayList<>(P);
         Set<Integer> result = new HashSet<>(k);
         for (int i = 0; i < P; i++) {
