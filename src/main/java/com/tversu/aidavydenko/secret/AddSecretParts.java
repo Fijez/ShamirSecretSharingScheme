@@ -24,11 +24,34 @@ public class AddSecretParts {
         int numberNewSecretParts = 0;
         List<Integer> polinom = interpolatingLagrangePolynomial(parts, P);
         // TODO: генерация частей секрета и добавление в json файлы
-        Map<Integer, Integer> shares = GenerateSecret.findShares(polinom, numberNewSecretParts, P);
+        Map<Integer, Integer> shares = addShares(parts, polinom, numberNewSecretParts, P);
 
     }
 
-    //готово
+    /**
+      сгенерированная часть может совпасть с той, что была создана ранее, но не исопльзовалась для восстановления секрета
+     */
+    private static Map<Integer, Integer> addShares(List<Point> parts, List<Integer> polinom, int numberNewSecretParts, int P) {
+        Map<Integer, Integer> newParts = parts.stream().collect(Collectors.toMap(Point::getX, Point::getY));
+        for (int i = 1; i <= numberNewSecretParts; i++) {
+            int temp = 0;
+            int k = (int) (Math.random() * polinom.size());
+            if (newParts.containsKey(k)) {
+                i--;
+                continue;
+            }
+            for (int j = 0; j < polinom.size(); j++) {
+                temp += polinom.get(j) * Math.pow(k, j);
+            }
+            if (temp % P == 0) {
+                i--;
+                continue;
+            }
+            newParts.put(k, temp % P);
+        }
+        return newParts;
+    }
+
     private static List<Integer> interpolatingLagrangePolynomial(List<Point> parts, int P) {
         List<Integer> polinom = new ArrayList<>(MIN_NUMBER_OF_SECRET);
         for (int i = 0; i < MIN_NUMBER_OF_SECRET; i++) {

@@ -44,20 +44,23 @@ public class GenerateSecret {
         // TODO: реализовать запись в json
     }
 
-    public static Map<Integer, Integer> findShares(List<Integer> factors, int numberParts, int P){
+    public static Map<Integer, Integer> findShares(List<Integer> polinom, int numberSecretParts, int P){
         Map<Integer, Integer> shares = new HashMap<>();
-        // TODO: реализовать проверку добавл€емых значений, чтобы не было повторных
-        for (int i = 1; i <= numberParts; i++) {
+        for (int i = 1; i <= numberSecretParts; i++) {
             int temp = 0;
-            int k = (int) (Math.random()*factors.size());
-            for (int j = 0; j < factors.size(); j++) {
-                temp += factors.get(j) * Math.pow(k, j);
+            int k = (int) (Math.random()*polinom.size());
+            if(shares.containsKey(k)){
+                i--;
+                continue;
+            }
+            for (int j = 0; j < polinom.size(); j++) {
+                temp += polinom.get(j) * Math.pow(k, j);
             }
             if(temp % P == 0){
                 i--;
                 continue;
             }
-            shares.put(i, temp % P);
+            shares.put(k, temp % P);
         }
         return shares;
     }
