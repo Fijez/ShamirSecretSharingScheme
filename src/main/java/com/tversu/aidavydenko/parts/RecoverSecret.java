@@ -1,37 +1,35 @@
 package com.tversu.aidavydenko.parts;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.tversu.aidavydenko.utils.FileManager;
+import com.tversu.aidavydenko.utils.SecretImpl;
+import com.tversu.aidavydenko.utils.SecretPart;
+
+import java.util.List;
 
 import static com.tversu.aidavydenko.utils.Utils.gcdex;
 import static com.tversu.aidavydenko.utils.Utils.sieveOfEratosthenes;
 
 public class RecoverSecret {
     private static final int MIN_NUMBER_OF_SECRET= 4;
-    public static int recover() {
-        // TODO: считываение P из json
-        int P = 0;
-        if (P == 0) {
-            P = sieveOfEratosthenes((int) (Math.random() * 100));
-            System.out.println(P);
-        }
+    public static void recover() {
+        SecretImpl secretImpl = new SecretImpl();
         // TODO: считываение частей секрета из json
-        Map<Integer, Integer> secretParts = new HashMap<>();
+        List<SecretPart> secretParts = FileManager.getSecretPartsPoints();
         int numK = secretParts.size();//кол-во частей, считанных из файла
         if(numK < MIN_NUMBER_OF_SECRET) {
-            System.out.println("недостаточно частей секрета");
-            return -1;
+            throw new RuntimeException("Недостаточное кол-во частей секрета");
         }
-        int secret = interpolatingLagrangePolynomial(secretParts, P) % P;
-        return secret;
-
+        int P = secretParts.get(0).getP();
+        int recoverySecret = interpolatingLagrangePolynomial(secretParts, P) % P;
+        FileManager.writeSecret(recoverySecret, P);
     }
 
-    private static int interpolatingLagrangePolynomial(Map<Integer,Integer> points, int P) {
+    private static int interpolatingLagrangePolynomial(List<SecretPart> points, int P) {
         int result = 0;
-        Integer[] values = points.values().toArray(new Integer[0]);
+        Integer[] values = points.stream().map(SecretPart::getValue).toArray(Integer[]::new);
+        Integer[] onlyPoints = points.stream().map(SecretPart::getPoint).toArray(Integer[]::new);
         for (int i = 0; i < points.size(); i++) {
-            result += findLi(i, points.keySet().toArray(new Integer[0]), P)*values[i];
+            result += findLi(i, onlyPoints, P)*values[i];
         }
         return result;
     }

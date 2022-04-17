@@ -5,11 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07da433d-1054-4adc-b6d2-2ead286924eb" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/../Shamir's secret sharing scheme/.idea/shelf/Uncommitted_changes_before_Update_at_09_04_2022_10_50_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Shamir's secret sharing scheme/.idea/shelf/Uncommitted_changes_before_Update_at_09_04_2022_10_50__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Shamir's secret sharing scheme/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Shamir's secret sharing scheme/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Shamir's secret sharing scheme/src/main/java/com/tversu/aidavydenko/secret/AddSecretParts.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Shamir's secret sharing scheme/src/main/java/com/tversu/aidavydenko/secret/AddSecretParts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Shamir's secret sharing scheme/src/main/java/com/tversu/aidavydenko/secret/GenerateSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Shamir's secret sharing scheme/src/main/java/com/tversu/aidavydenko/secret/GenerateSecret.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/FileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Secret.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/SecretImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/SecretPart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1156304131.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1164440413.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1525919705.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1610525991.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1666607455.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1766505436.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/771775563.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/893192050.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/task.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_04_2022_10_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_04_2022_10_50__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShamirsSecretSharingScheme..iml" beforeDir="false" afterPath="$PROJECT_DIR$/ShamirsSecretSharingScheme..iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/parts/RecoverSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/parts/RecoverSecret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/secret/GenerateSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/secret/GenerateSecret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/secret.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/secret.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,11 +44,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Shamir's secret sharing scheme" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -34,33 +59,50 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="26rsjO5XSPEQKYBiQRRB4SWTNiU" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/programms/java/ShamirSecretSharingScheme/src/main/java/resources/parts",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\programms\java\ShamirSecretSharingScheme\src\main\java\resources\parts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\programms\java\ShamirSecretSharingScheme\src\main\java\resources\parts" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tversu.aidavydenko.utils" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Demo" />
-      <module name="Shamir's secret sharing scheme." />
+      <module name="ShamirsSecretSharingScheme." />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value=".*" />
@@ -94,6 +136,10 @@
       <workItem from="1648885337030" duration="11712000" />
       <workItem from="1648930561718" duration="1355000" />
       <workItem from="1649488053866" duration="3650000" />
+      <workItem from="1650040431946" duration="8597000" />
+      <workItem from="1650092527245" duration="1812000" />
+      <workItem from="1650140119046" duration="1157000" />
+      <workItem from="1650186713052" duration="13082000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1649490698507</created>
@@ -118,9 +164,9 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="." />
     <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>

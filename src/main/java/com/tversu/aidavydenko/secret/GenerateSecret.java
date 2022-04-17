@@ -1,5 +1,9 @@
 package com.tversu.aidavydenko.secret;
 
+import com.tversu.aidavydenko.utils.FileManager;
+import com.tversu.aidavydenko.utils.SecretImpl;
+import com.tversu.aidavydenko.utils.SecretPart;
+
 import java.util.*;
 
 import static com.tversu.aidavydenko.utils.Utils.getRandPolinom;
@@ -25,31 +29,30 @@ public class GenerateSecret {
          //вывод в json shares (так же нельзя забывать размер поля и
          степерь полинома, но по ТЗ его не передаем)
          */
-        // TODO: считываение P из json
-        int P = 0;
+        //считали из json
+        SecretImpl secretImpl = FileManager.readSecret();
+        int P = secretImpl.getP();
         if (P == 0) {
             P = sieveOfEratosthenes((int) ((Math.random() * 100) + 20));
         }
-        // TODO: считываение общего кол-ва частей секрета из json
-        int numberSecretParts = 0;
+        int numberSecretParts = secretImpl.getPartsCount();
         if (numberSecretParts != 0) {
             numberSecretParts = (int) ((Math.random() * 10) + 4);
         }
-        // TODO: считываение секрета из json
-        int secret = 18938 % P;//считывание секрета
+        int secretN = secretImpl.getSecret();//считывание секрета
 
         //значение с a1 по ak-1 генерируем
-        List<Integer> polinom = new ArrayList<>(getRandPolinom(K, secret, P));
-        Map<Integer, Integer> shares = findShares(polinom, numberSecretParts, P);
+        List<Integer> polinom = new ArrayList<>(getRandPolinom(K, secretN, P));
+        List<SecretPart> shares = findShares(polinom, numberSecretParts, P);
         // TODO: реализовать запись в json
+        FileManager.writeSharingSecret(shares);
     }
-
-    public static Map<Integer, Integer> findShares(List<Integer> polinom, int numberSecretParts, int P){
-        Map<Integer, Integer> shares = new HashMap<>();
+    public static List<SecretPart> findShares(List<Integer> polinom, int numberSecretParts, int P){
+        List<SecretPart> shares = new ArrayList<>();
         for (int i = 1; i <= numberSecretParts; i++) {
             int temp = 0;
-            int k = (int) (Math.random()*polinom.size());
-            if(shares.containsKey(k)){
+            int k = (int) (Math.random()*P);
+            if(shares.stream().anyMatch(x->x.getPoint().equals(k))){
                 i--;
                 continue;
             }
@@ -60,7 +63,7 @@ public class GenerateSecret {
                 i--;
                 continue;
             }
-            shares.put(k, temp % P);
+            shares.add(new SecretPart(k,temp%P, P));
         }
         return shares;
     }
