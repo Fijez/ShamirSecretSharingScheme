@@ -9,7 +9,7 @@ import java.util.*;
 import static com.tversu.aidavydenko.utils.Utils.getRandPolinom;
 import static com.tversu.aidavydenko.utils.Utils.sieveOfEratosthenes;
 
-public class GenerateSecret {
+public class  GenerateSecret {
 
     private static final int K = 4;
     public static void generateSecret() {
@@ -32,38 +32,35 @@ public class GenerateSecret {
         //считали из json
         SecretImpl secretImpl = FileManager.readSecret();
         int P = secretImpl.getP();
-        if (P == 0) {
-            P = sieveOfEratosthenes((int) ((Math.random() * 100) + 20));
-        }
         int numberSecretParts = secretImpl.getPartsCount();
-        if (numberSecretParts != 0) {
+        if (numberSecretParts == 0) {
             numberSecretParts = (int) ((Math.random() * 10) + 4);
         }
         int secretN = secretImpl.getSecret();//считывание секрета
 
         //значение с a1 по ak-1 генерируем
-        List<Integer> polinom = new ArrayList<>(getRandPolinom(K, secretN, P));
+            List<Integer> polinom = new ArrayList<>(getRandPolinom(K, secretN, P));
         List<SecretPart> shares = findShares(polinom, numberSecretParts, P);
-        // TODO: реализовать запись в json
+        // TODO: потом измени запись в файл, чтобы части разделенного секрета записывались в номвую папку каждый раз
         FileManager.writeSharingSecret(shares);
     }
     public static List<SecretPart> findShares(List<Integer> polinom, int numberSecretParts, int P){
         List<SecretPart> shares = new ArrayList<>();
         for (int i = 1; i <= numberSecretParts; i++) {
-            int temp = 0;
+            int temp = polinom.get(0);
             int k = (int) (Math.random()*P);
             if(shares.stream().anyMatch(x->x.getPoint().equals(k))){
                 i--;
                 continue;
             }
-            for (int j = 0; j < polinom.size(); j++) {
-                temp += polinom.get(j) * Math.pow(k, j);
+            for (int j = 1; j < polinom.size(); j++) {
+                temp = (temp + (int)(polinom.get(j) * (Math.pow(k, j) % P)) % P)% P;
             }
-            if(temp % P == 0){
+            if(temp == 0){
                 i--;
                 continue;
             }
-            shares.add(new SecretPart(k,temp%P, P));
+            shares.add(new SecretPart(k, temp, P));
         }
         return shares;
     }

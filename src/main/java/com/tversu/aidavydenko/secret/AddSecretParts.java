@@ -6,7 +6,7 @@ import com.tversu.aidavydenko.utils.Point;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.tversu.aidavydenko.utils.Utils.gcdex;
+import static com.tversu.aidavydenko.utils.Utils.mod;
 
 public class AddSecretParts {
     private static final int MIN_NUMBER_OF_SECRET= 4;
@@ -47,7 +47,7 @@ public class AddSecretParts {
                 i--;
                 continue;
             }
-            newParts.put(k, temp % P);
+            newParts.put(k, (temp % P + P) % P);
         }
         return newParts;
     }
@@ -61,8 +61,8 @@ public class AddSecretParts {
             List<Integer> keys = parts.stream().map(Point::getX).collect(Collectors.toList());
             List<Integer> temp = findLi(i, keys, P);//*parts.get(i).getY();
             for (int j = 0; j < temp.size(); j++) {
-                temp.set(j, (temp.get(j) * parts.get(i).getY()) % P);
-                polinom.set(j, (polinom.get(j) + temp.get(j)) % P);
+                temp.set(j, ((temp.get(j) * parts.get(i).getY()) % P + P) % P);
+                polinom.set(j, ((polinom.get(j) + temp.get(j)) % P + P) % P);
             }
         }
         return polinom;
@@ -101,9 +101,13 @@ public class AddSecretParts {
             numerator[2] += points.get(j);
             denominator *= points.get(i) - points.get(j);
         }
-        denominator = (gcdex(denominator, P)[1] % P + P) % P;//поиск обратного
+        boolean denomIsUpZero = denominator > 0;
+        denominator = mod(denominator, P);//поиск обратного
+        if (!denomIsUpZero){
+            denominator = (denominator * 2) % P;
+        }
         for (int j = 0; j < 4; j++) {
-            numerator[i] = ((numerator[i]%P)*denominator)% P;//может можно оптимизировать
+            numerator[i] = (((numerator[i] % P + P) % P)*denominator)% P;
         }
         return Arrays.stream(numerator).boxed().collect(Collectors.toList());
     }

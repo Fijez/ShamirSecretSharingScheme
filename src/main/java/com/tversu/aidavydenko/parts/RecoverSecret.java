@@ -6,8 +6,7 @@ import com.tversu.aidavydenko.utils.SecretPart;
 
 import java.util.List;
 
-import static com.tversu.aidavydenko.utils.Utils.gcdex;
-import static com.tversu.aidavydenko.utils.Utils.sieveOfEratosthenes;
+import static com.tversu.aidavydenko.utils.Utils.*;
 
 public class RecoverSecret {
     private static final int MIN_NUMBER_OF_SECRET= 4;
@@ -20,16 +19,23 @@ public class RecoverSecret {
             throw new RuntimeException("Недостаточное кол-во частей секрета");
         }
         int P = secretParts.get(0).getP();
+        for (SecretPart part :
+                secretParts) {
+            if (!part.getP().equals(P)) {
+            throw new RuntimeException("Присутствуют части разных ключей");
+            }
+        }
         int recoverySecret = interpolatingLagrangePolynomial(secretParts, P) % P;
         FileManager.writeSecret(recoverySecret, P);
     }
 
     private static int interpolatingLagrangePolynomial(List<SecretPart> points, int P) {
         int result = 0;
-        Integer[] values = points.stream().map(SecretPart::getValue).toArray(Integer[]::new);
-        Integer[] onlyPoints = points.stream().map(SecretPart::getPoint).toArray(Integer[]::new);
-        for (int i = 0; i < points.size(); i++) {
-            result += findLi(i, onlyPoints, P)*values[i];
+        Integer[] values = points.stream().parallel().map(SecretPart::getValue).limit(4).toArray(Integer[]::new);
+        Integer[] onlyPoints = points.stream().parallel().map(SecretPart::getPoint).limit(4).toArray(Integer[]::new);
+        for (int i = 0; i < MIN_NUMBER_OF_SECRET; i++) {
+            int temp = (findLi(i, onlyPoints, P) * values[i]) % P;
+            result = (result + temp) % P;
         }
         return result;
     }
@@ -38,16 +44,19 @@ public class RecoverSecret {
         int numerator = 1;
         int denominator = 1;
         for (int j = 0; j < i; j++) {
-            numerator *= points[j];
+            numerator *= (-points[j]);
             denominator *= points[i] - points[j];
         }
         for (int j = i+1; j < points.length; j++) {
-            numerator *= points[j];
+            numerator *= (-points[j]);
             denominator *= points[i] - points[j];
         }
-        numerator = numerator % P;
-        denominator = (gcdex(denominator, P)[1] % P + P) % P;//поиск обратного
-        numerator *= denominator;
-        return numerator;
+        numerator = (numerator % P + P) % P;
+        boolean denomIsUpZero = denominator > 0;
+        denominator = mod(denominator, P);
+        if (!denomIsUpZero){
+            denominator = (denominator * 2) % P;
+        }
+        return (denominator * numerator) % P;
     }
 }

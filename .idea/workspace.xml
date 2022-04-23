@@ -4,35 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07da433d-1054-4adc-b6d2-2ead286924eb" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_13_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/FileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Secret.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/SecretImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/SecretPart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1156304131.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1164440413.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1525919705.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1610525991.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1666607455.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1766505436.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/771775563.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/893192050.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/task.txt" afterDir="false" />
+    <list default="true" id="07da433d-1054-4adc-b6d2-2ead286924eb" name="Changes" comment="Разобрался с чтением и записью в json&#10;Неправильно восстанавливается секрет">
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1472682156.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/restoreSecret/restoredSecret.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_13_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_13_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_2_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_04_2022_10_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_04_2022_10_50__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_04_2022_10_50_[Changes]/shelved.patch" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_04_2022_10_50_[Changes]/shelved.patch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shamir's secret sharing scheme..iml" beforeDir="false" afterPath="$PROJECT_DIR$/Shamir's secret sharing scheme..iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShamirsSecretSharingScheme..iml" beforeDir="false" afterPath="$PROJECT_DIR$/ShamirsSecretSharingScheme..iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/parts/RecoverSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/parts/RecoverSecret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/secret/AddSecretParts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/secret/AddSecretParts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/secret/GenerateSecret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/secret/GenerateSecret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Secret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Secret.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/SecretImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/SecretImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/SecretPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/SecretPart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/parts/1156304131.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/parts/1164440413.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1164440413.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/parts/1525919705.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/parts/1610525991.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1610525991.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/parts/1666607455.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/parts/1766505436.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/parts/1766505436.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/parts/771775563.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/parts/893192050.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/resources/secret.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/secret.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/task.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/task.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,20 +82,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/programms/java/ShamirSecretSharingScheme/src/main/java/resources/parts",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/programms/java/ShamirSecretSharingScheme&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\programms\java\ShamirSecretSharingScheme\src\main\java\resources\parts" />
@@ -139,7 +150,11 @@
       <workItem from="1650040431946" duration="8597000" />
       <workItem from="1650092527245" duration="1812000" />
       <workItem from="1650140119046" duration="1157000" />
-      <workItem from="1650186713052" duration="13082000" />
+      <workItem from="1650186713052" duration="13204000" />
+      <workItem from="1650222532577" duration="2417000" />
+      <workItem from="1650660568559" duration="8281000" />
+      <workItem from="1650669749051" duration="4562000" />
+      <workItem from="1650717015091" duration="10073000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1649490698507</created>
@@ -148,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649490698507</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Разобрался с чтением и записью в json&#10;Неправильно восстанавливается секрет">
+      <created>1650205140138</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650205140139</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +190,24 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Разобрался с чтением и записью в json&#10;Неправильно восстанавливается секрет" />
+    <option name="LAST_COMMIT_MESSAGE" value="Разобрался с чтением и записью в json&#10;Неправильно восстанавливается секрет" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/tversu/aidavydenko/utils/Utils.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="values" />
+        <watch expression="values" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
