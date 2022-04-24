@@ -35,7 +35,33 @@ public class FileManager {
         }
     }
 
+    public static void clearFolders() {
 
+        Path parts = Paths.get("src/main/java/resources/parts");
+        Path restoreSecret = Paths.get("src/main/java/resources/restoreSecret");
+
+        for (File file: Objects.requireNonNull(parts.toFile().listFiles())) {
+            file.delete();
+        }
+        for (File file: Objects.requireNonNull(restoreSecret.toFile().listFiles())) {
+            file.delete();
+        }
+    }
+    public static void clearRestoredSecretFolder(){
+        Path restoreSecret = Paths.get("src/main/java/resources/restoreSecret");
+
+        for (File file: Objects.requireNonNull(restoreSecret.toFile().listFiles())) {
+            file.delete();
+        }
+    }
+    public static void clearPartsFolder() {
+
+        Path parts = Paths.get("src/main/java/resources/parts");
+
+        for (File file: Objects.requireNonNull(parts.toFile().listFiles())) {
+            file.delete();
+        }
+    }
     public static SecretImpl readSecret() {
         //File secretPartsFolder = Path.of("src", "main", "resources").toFile();
         SecretImpl secretImpl = new SecretImpl();

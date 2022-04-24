@@ -33,8 +33,8 @@ public class  GenerateSecret {
         SecretImpl secretImpl = FileManager.readSecret();
         int P = secretImpl.getP();
         int numberSecretParts = secretImpl.getPartsCount();
-        if (numberSecretParts == 0) {
-            numberSecretParts = (int) ((Math.random() * 10) + 4);
+        if (numberSecretParts < 4) {
+            throw new RuntimeException("Недостаточное кол-во генерируемых частей");
         }
         int secretN = secretImpl.getSecret();//считывание секрета
 
