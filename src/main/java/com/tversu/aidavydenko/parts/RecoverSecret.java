@@ -1,7 +1,6 @@
 package com.tversu.aidavydenko.parts;
 
 import com.tversu.aidavydenko.utils.FileManager;
-import com.tversu.aidavydenko.utils.SecretImpl;
 import com.tversu.aidavydenko.utils.SecretPart;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import static com.tversu.aidavydenko.utils.Utils.*;
 public class RecoverSecret {
     private static final int MIN_NUMBER_OF_SECRET= 4;
     public static void recover() {
-        SecretImpl secretImpl = new SecretImpl();
+//        SecretImpl secretImpl = new SecretImpl();
         // TODO: считываение частей секрета из json
         List<SecretPart> secretParts = FileManager.getSecretPartsPoints();
         int numK = secretParts.size();//кол-во частей, считанных из файла
@@ -26,6 +25,7 @@ public class RecoverSecret {
             }
         }
         int recoverySecret = interpolatingLagrangePolynomial(secretParts, P) % P;
+        FileManager.clearRestoredSecretFolder();
         FileManager.writeSecret(recoverySecret, P);
     }
 
