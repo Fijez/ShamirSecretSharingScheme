@@ -53,10 +53,11 @@ public class Utils {
 //    }
     public static int mod(int a, int P){
         int i = 0;
+        a = (a % P + P) % P;
         if (a % P != 0)
         while ((a * i) % P != 1) {
             i++;
         }
-        return (i % P + P) % P;
+        return i % P;
     }
 }

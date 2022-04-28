@@ -49,7 +49,7 @@ public class  GenerateSecret {
         for (int i = 1; i <= numberSecretParts; i++) {
             int temp = polinom.get(0);
             int k = (int) (Math.random()*P);
-            if(shares.stream().anyMatch(x->x.getPoint().equals(k))){
+            if(shares.stream().anyMatch(x->x.getPoint().equals(k)) || k == 0){
                 i--;
                 continue;
             }
