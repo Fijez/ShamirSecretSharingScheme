@@ -14,7 +14,8 @@ import static com.tversu.aidavydenko.utils.FileManager.clearFolders;
 public class Demo {
 
     public static void main(String[] args) {
-        while(true) {
+        boolean choice = true;
+        while(choice) {
             System.out.println("¬ведите 1, чтобы разделить секрет\n" +
                     "¬ведите 2, чтобы восстановить секрет\n" +
                     "¬ведите 3, чтобы добавить части секрета\n" +
@@ -32,6 +33,10 @@ public class Demo {
                     // TODO: неправильно работает, исправь ошибку
                     AddSecretParts.addSecretParts();
                     break;
+                case 4:
+                    choice = false;
+                    break;
+
             }
         }
     }
