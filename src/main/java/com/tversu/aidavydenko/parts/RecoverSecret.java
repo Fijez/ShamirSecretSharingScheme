@@ -26,40 +26,39 @@ public class RecoverSecret {
                 throw new RuntimeException("Присутствуют части разных ключей");
             }
         }
-        int recoverySecret = AddSecretParts.interpolatingLagrangePolynomial(secretParts, P).get(0);
+        List<Integer> recoverySecret = AddSecretParts.interpolatingLagrangePolynomial(secretParts, P);
         FileManager.clearRestoredSecretFolder();
-        System.out.println("Secret = " + recoverySecret);
-        FileManager.writeSecret(recoverySecret, P);
+        FileManager.writeSecret(recoverySecret.get(0), P);
     }
 
-    private static int interpolatingLagrangePolynomial(List<SecretPart> points, int P) {
-        int result = 0;
-        Integer[] values = points.stream().parallel().map(SecretPart::getValue).limit(4).toArray(Integer[]::new);
-        Integer[] onlyPoints = points.stream().parallel().map(SecretPart::getPoint).limit(4).toArray(Integer[]::new);
-        for (int i = 0; i < MIN_NUMBER_OF_SECRET; i++) {
-            int temp = (findLi(i, onlyPoints, P) * values[i]) % P;
-            result = (result + temp) % P;
-        }
-        return result;
-    }
-
-    private static int findLi(int i, Integer[] points, int P) {
-        int numerator = 1;
-        int denominator = 1;
-        for (int j = 0; j < i; j++) {
-            numerator *= (-points[j]);
-            denominator *= points[i] - points[j];
-        }
-        for (int j = i + 1; j < points.length; j++) {
-            numerator *= (-points[j]);
-            denominator *= points[i] - points[j];
-        }
-        numerator = (numerator % P + P) % P;
-        boolean denomIsUpZero = denominator > 0;
-        denominator = mod(denominator, P);
-        if (!denomIsUpZero) {
-            denominator = (denominator * 2) % P;
-        }
-        return (denominator * numerator) % P;
-    }
+//    private static int interpolatingLagrangePolynomial(List<SecretPart> points, int P) {
+//        int result = 0;
+//        Integer[] values = points.stream().parallel().map(SecretPart::getValue).limit(4).toArray(Integer[]::new);
+//        Integer[] onlyPoints = points.stream().parallel().map(SecretPart::getPoint).limit(4).toArray(Integer[]::new);
+//        for (int i = 0; i < MIN_NUMBER_OF_SECRET; i++) {
+//            int temp = (findLi(i, onlyPoints, P) * values[i]) % P;
+//            result = (result + temp) % P;
+//        }
+//        return result;
+//    }
+//
+//    private static int findLi(int i, Integer[] points, int P) {
+//        int numerator = 1;
+//        int denominator = 1;
+//        for (int j = 0; j < i; j++) {
+//            numerator *= (-points[j]);
+//            denominator *= points[i] - points[j];
+//        }
+//        for (int j = i + 1; j < points.length; j++) {
+//            numerator *= (-points[j]);
+//            denominator *= points[i] - points[j];
+//        }
+//        numerator = (numerator % P + P) % P;
+//        boolean denomIsUpZero = denominator > 0;
+//        denominator = mod(denominator, P);
+//        if (!denomIsUpZero) {
+//            denominator = (denominator * 2) % P;
+//        }
+//        return (denominator * numerator) % P;
+//    }
 }

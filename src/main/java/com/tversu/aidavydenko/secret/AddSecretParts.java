@@ -45,6 +45,8 @@ public class AddSecretParts {
         Map<Integer, Integer> newParts = parts.stream().
                 collect(Collectors.
                         toMap(SecretPart::getPoint, SecretPart::getValue));
+        System.out.println("old parts = " + newParts);
+        System.out.print("new parts = ");
         for (int i = 1; i <= numberNewSecretParts; i++) {
             int temp = 0;
             int k = (int) (Math.random() * P);
@@ -53,13 +55,14 @@ public class AddSecretParts {
                 continue;
             }
             for (int j = 0; j < polinom.size(); j++) {
-                temp += polinom.get(j) * Math.pow(k, j);
+                temp = (temp + (int)(polinom.get(j) * (Math.pow(k, j) % P)) % P)% P;
             }
             if (temp % P == 0) {
                 i--;
                 continue;
             }
-            newParts.put(k, (temp % P + P) % P);
+            System.out.print(" " + (temp) + " ");
+            newParts.put(k, temp);
         }
         List<SecretPart> newSecretParts = newParts.
                 entrySet().
@@ -85,6 +88,7 @@ public class AddSecretParts {
                 polinom.set(j, (polinom.get(j) + li.get(j)) % P);
             }
         }
+        System.out.println("Recovered polinom = " + polinom);
         return polinom;
     }
 
@@ -93,7 +97,6 @@ public class AddSecretParts {
     private static List<Integer> findLi(int i, List<Integer> points, int P) {
         int[] numerator = {1, 0, 0, 1};
         int denominator = 1;
-
         for (Integer point : points) {
             if (!points.get(i).equals(point)) {
                 denominator *= (points.get(i) - point);

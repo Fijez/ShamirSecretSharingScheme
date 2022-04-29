@@ -6,7 +6,7 @@ public class Utils {
     public static List<Integer> getRandPolinom(int k, int secret, int P) {
         //List<Integer> factors = new ArrayList<>(P);
         List<Integer> result = new LinkedList<>();
-//        for (int i = 0; i < P; i++) {
+//        for (int i = 0; i < P; i++) {1
 //            factors.add(i);
 //        }
 //        factors.remove(secret);
@@ -14,7 +14,7 @@ public class Utils {
         for (int i = 1; i < k; i++) {
 //            int index = (int) (Math.random() * factors.size());
             int index = (int) (Math.random() * P);
-            result.add(index);
+            result.add(index % P);
 //            factors.remove(index);
         }
         return result;

@@ -5,4 +5,6 @@
 /../../Shamir's secret sharing scheme./.idea/httpRequests/
 # Datasource local storage ignored files
 /../../Shamir's secret sharing scheme./.idea/dataSources/
+/../../Shamir's secret sharing scheme./src/main/resources/parts
+/../../Shamir's secret sharing scheme./src/main/resources/restoreSecret
 /../../Shamir's secret sharing scheme./.idea/dataSources.local.xml

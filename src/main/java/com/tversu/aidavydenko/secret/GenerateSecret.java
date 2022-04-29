@@ -40,6 +40,7 @@ public class  GenerateSecret {
 
         //значение с a1 по ak-1 генерируем
             List<Integer> polinom = new ArrayList<>(getRandPolinom(K, secretN, P));
+        System.out.println("Generated polinom = " + polinom);
         List<SecretPart> shares = findShares(polinom, numberSecretParts, P);
         // TODO: потом измени запись в файл, чтобы части разделенного секрета записывались в номвую папку каждый раз
         FileManager.writeSharingSecret(shares);
