@@ -3,11 +3,10 @@ package com.tversu.aidavydenko.secret;
 import com.tversu.aidavydenko.utils.FileManager;
 import com.tversu.aidavydenko.utils.SecretPart;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.tversu.aidavydenko.utils.Utils.mod;
+import static com.tversu.aidavydenko.utils.Utils.envMod;
 
 public class AddSecretParts {
     private static final int MIN_NUMBER_OF_SECRET = 4;
@@ -15,7 +14,6 @@ public class AddSecretParts {
     public static void addSecretParts() {
         //восстановили секрет, после чего создали части, не совпадающие с уже имеющимеся
         //необходимо восстановить весь полином
-        //int secret = RecoverSecret.recover();//находится при поиске полинома
         List<SecretPart> parts = FileManager.getSecretPartsPoints();
         int numK = parts.size();//кол-во частей, считанных из файла
         if (numK < MIN_NUMBER_OF_SECRET) {
@@ -28,11 +26,9 @@ public class AddSecretParts {
                 throw new RuntimeException("Присутствуют части разных полей");
             }
         }
-        //Set<Integer> keys = parts.stream().map(Point::getX).collect(Collectors.toCollection(TreeSet::new));
         System.out.println("Введите кол-во частей для добавления: ");
         int numberNewSecretParts = new Scanner(System.in).nextInt();
         List<Integer> polinom = interpolatingLagrangePolynomial(parts, P);
-        // TODO: генерация частей секрета и добавление в json файлы
         List<SecretPart> shares = addShares(parts, polinom, numberNewSecretParts, P);
         FileManager.clearPartsFolder();
         FileManager.writeSharingSecret(shares);
@@ -123,14 +119,7 @@ public class AddSecretParts {
                         + ((-points.get(0)) * (-points.get(1)))) % P + P) % P;
                 break;
         }
-
-        boolean denomIsUpZero = denominator >= 0;
-        denominator = mod(denominator, P);
-//        if (!denomIsUpZero) {
-//            denominator = (denominator * 2) % P;
-//        }
-
-        int finalDenominator = denominator;
+        int finalDenominator = envMod(denominator, P);
         numerator = Arrays.stream(numerator).map(x -> ((((x % P) + P) % P) * finalDenominator) % P).toArray();
         return Arrays.stream(numerator).boxed().collect(Collectors.toList());
 //

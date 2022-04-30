@@ -7,13 +7,13 @@ import com.tversu.aidavydenko.utils.SecretPart;
 import java.util.*;
 
 import static com.tversu.aidavydenko.utils.Utils.getRandPolinom;
-import static com.tversu.aidavydenko.utils.Utils.sieveOfEratosthenes;
+import static com.tversu.aidavydenko.utils.Utils.isPrime;
 
 public class  GenerateSecret {
 
     private static final int K = 4;
     public static void generateSecret() {
-        /**
+        /*
         минимальное кол-во участников,
         необходимых для восстановления секрета
         необходимо использовать полином степени K-1, т.е. 3
@@ -32,6 +32,9 @@ public class  GenerateSecret {
         //считали из json
         SecretImpl secretImpl = FileManager.readSecret();
         int P = secretImpl.getP();
+        if (!isPrime(P)) {
+            throw new RuntimeException("P не простое");
+        }
         int numberSecretParts = secretImpl.getPartsCount();
         if (numberSecretParts < 4) {
             throw new RuntimeException("Недостаточное кол-во генерируемых частей");
@@ -42,7 +45,6 @@ public class  GenerateSecret {
             List<Integer> polinom = new ArrayList<>(getRandPolinom(K, secretN, P));
         System.out.println("Generated polinom = " + polinom);
         List<SecretPart> shares = findShares(polinom, numberSecretParts, P);
-        // TODO: потом измени запись в файл, чтобы части разделенного секрета записывались в номвую папку каждый раз
         FileManager.writeSharingSecret(shares);
     }
     public static List<SecretPart> findShares(List<Integer> polinom, int numberSecretParts, int P){
