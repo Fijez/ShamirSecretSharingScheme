@@ -4,18 +4,11 @@ import java.util.*;
 
 public class Utils {
     public static List<Integer> getRandPolinom(int k, int secret, int P) {
-        //List<Integer> factors = new ArrayList<>(P);
         List<Integer> result = new LinkedList<>();
-//        for (int i = 0; i < P; i++) {1
-//            factors.add(i);
-//        }
-//        factors.remove(secret);
         result.add(secret);
         for (int i = 1; i < k; i++) {
-//            int index = (int) (Math.random() * factors.size());
             int index = (int) (Math.random() * P);
-            result.add(index % P);
-//            factors.remove(index);
+            if (index != 0) result.add(index);
         }
         return result;
     }
@@ -39,6 +32,11 @@ public class Utils {
         return primeNumbers.get(primeNumbers.size() - 1);
     }
 
+    public static boolean isPrime(int n) {
+        int isPrime = sieveOfEratosthenes(n);
+        return n == isPrime;
+    }
+
 //    public static int[] gcdex(int a, int b) {//расширенный алгоритм евклида
 ////        a = Math.abs(a);
 //        if (b == 0) {
@@ -51,11 +49,10 @@ public class Utils {
 //        int y = fromEnd[2] - (a / b) * fromEnd[3];
 //        return new int[]{a,b,x,y};
 //    }
-    public static int mod(int a, int P){
+    public static int envMod(int a, int P){
         int i = 0;
         a = (a % P + P) % P;
-        if (a % P != 0)
-        while ((a * i) % P != 1) {
+        if (a % P != 0) while ((a * i) % P != 1) {
             i++;
         }
         return i % P;

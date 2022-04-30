@@ -12,8 +12,7 @@ public class RecoverSecret {
     private static final int MIN_NUMBER_OF_SECRET = 4;
 
     public static void recover() {
-//        SecretImpl secretImpl = new SecretImpl();
-        // TODO: считываение частей секрета из json
+        //считываение частей секрета из json
         List<SecretPart> secretParts = FileManager.getSecretPartsPoints();
         int numK = secretParts.size();//кол-во частей, считанных из файла
         if (numK < MIN_NUMBER_OF_SECRET) {
@@ -26,39 +25,18 @@ public class RecoverSecret {
                 throw new RuntimeException("Присутствуют части разных ключей");
             }
         }
+        //TODO: проверить на дубликаты значений
+        for (int i = 0; i < secretParts.size() - 1; i++) {
+            SecretPart secretPart1 = secretParts.get(i);
+            for (int j = i+1; j < secretParts.size(); j++) {
+                SecretPart secretPart2 = secretParts.get(j);
+                if (secretPart2.equals(secretPart1) || secretPart1.getPoint().equals(secretPart2.getPoint())) {
+                    throw new RuntimeException("Какие-то части секрета совпадают");
+                }
+            }
+        }
         List<Integer> recoverySecret = AddSecretParts.interpolatingLagrangePolynomial(secretParts, P);
         FileManager.clearRestoredSecretFolder();
         FileManager.writeSecret(recoverySecret.get(0), P);
     }
-
-//    private static int interpolatingLagrangePolynomial(List<SecretPart> points, int P) {
-//        int result = 0;
-//        Integer[] values = points.stream().parallel().map(SecretPart::getValue).limit(4).toArray(Integer[]::new);
-//        Integer[] onlyPoints = points.stream().parallel().map(SecretPart::getPoint).limit(4).toArray(Integer[]::new);
-//        for (int i = 0; i < MIN_NUMBER_OF_SECRET; i++) {
-//            int temp = (findLi(i, onlyPoints, P) * values[i]) % P;
-//            result = (result + temp) % P;
-//        }
-//        return result;
-//    }
-//
-//    private static int findLi(int i, Integer[] points, int P) {
-//        int numerator = 1;
-//        int denominator = 1;
-//        for (int j = 0; j < i; j++) {
-//            numerator *= (-points[j]);
-//            denominator *= points[i] - points[j];
-//        }
-//        for (int j = i + 1; j < points.length; j++) {
-//            numerator *= (-points[j]);
-//            denominator *= points[i] - points[j];
-//        }
-//        numerator = (numerator % P + P) % P;
-//        boolean denomIsUpZero = denominator > 0;
-//        denominator = mod(denominator, P);
-//        if (!denomIsUpZero) {
-//            denominator = (denominator * 2) % P;
-//        }
-//        return (denominator * numerator) % P;
-//    }
 }

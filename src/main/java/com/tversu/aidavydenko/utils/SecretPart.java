@@ -44,4 +44,24 @@ public class SecretPart {
     public void setP(Integer p) {
         this.p = p;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SecretPart)) return false;
+
+        SecretPart that = (SecretPart) o;
+
+        if (!getPoint().equals(that.getPoint())) return false;
+        if (!getValue().equals(that.getValue())) return false;
+        return getP().equals(that.getP());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getPoint().hashCode();
+        result = 31 * result + getValue().hashCode();
+        result = 31 * result + getP().hashCode();
+        return result;
+    }
 }

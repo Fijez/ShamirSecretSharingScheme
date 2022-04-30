@@ -21,7 +21,7 @@ public class FileManager {
 
     public static void writeSharingSecret(List<SecretPart> secretParts) {
         try {
-            Path secretPartsSource = Paths.get("src", "main", "java", "resources", "parts");//Path.of("ShamirSecretSharingScheme","src", "main", "resources", "parts");
+            Path secretPartsSource = Paths.get("src", "main", "java", "resources", "parts");
             FileWriter fileWriter;
             for (SecretPart secretPart : secretParts) {
                 File secretPartFile = Path.of(secretPartsSource.toString(), secretPart.hashCode() + ".json").toFile();
@@ -63,7 +63,6 @@ public class FileManager {
         }
     }
     public static SecretImpl readSecret() {
-        //File secretPartsFolder = Path.of("src", "main", "resources").toFile();
         SecretImpl secretImpl = new SecretImpl();
         ClassLoader classLoader = FileManager.class.getClassLoader();
 
@@ -74,20 +73,20 @@ public class FileManager {
         File secretPartsFolder = new File(resource.getFile());
         try (FileReader fileReader = new FileReader(secretPartsFolder)) {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            StringBuilder json = new StringBuilder();
+            StringBuilder jsonStr = new StringBuilder();
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                json.append(line);
+                jsonStr.append(line);
             }
-            if (!(json.toString().contains("\"secret\":") && json.toString().contains("\"partsCount\":"))) {
+            if (!(jsonStr.toString().contains("\"secret\":") && jsonStr.toString().contains("\"partsCount\":"))) {
                 throw new RuntimeException("неверные параметры json");
             }
-            if (json.toString().contains("\"p\":")) {
-                secretImpl = OBJECT_MAPPER.readValue(json.toString(), SecretImpl.class);
-            } else if (json.toString().contains("P")) {
+            if (jsonStr.toString().contains("\"p\":")) {
+                secretImpl = OBJECT_MAPPER.readValue(jsonStr.toString(), SecretImpl.class);
+            } else if (jsonStr.toString().contains("P")) {
                 throw new RuntimeException("неверные параметры json, 'P' должна быть строчной");
             } else {
-                JsonNode jsonNode = OBJECT_MAPPER.readTree(String.valueOf(json));
+                JsonNode jsonNode = OBJECT_MAPPER.readTree(String.valueOf(jsonStr));
                 secretImpl.setSecret(jsonNode.path("secret").asInt());
                 secretImpl.setPartsCount(jsonNode.path("partsCount").asInt());
                 secretImpl.setP(Utils.sieveOfEratosthenes((int) (Math.random() * P_FOR_RANDOM)));
@@ -160,9 +159,5 @@ public class FileManager {
             }
         }
         return result;
-    }
-
-    public static boolean checkIfSecretExists(SecretImpl result) {
-        return Path.of("src", "main", "resources", "parts", result.getSecret().toString()).toFile().exists();
     }
 }

@@ -26,7 +26,6 @@ public class Demo {
                     RecoverSecret.recover();
                     break;
                 case 3:
-                    // TODO: неправильно работает, исправь ошибку
                     AddSecretParts.addSecretParts();
                     break;
                 case 4:
